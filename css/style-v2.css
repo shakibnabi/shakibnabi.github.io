@@ -1,0 +1,1059 @@
+/* ===============================
+   Brand Tokens
+================================ */
+:root {
+    --primary: #3e43e9;
+    --primary-light: #5a5ef0;
+    --primary-soft: rgba(62, 67, 233, 0.12);
+    --primary-soft-strong: rgba(62, 67, 233, 0.18);
+    --text-dark: #212529;
+    --text-muted: #6c757d;
+}
+
+/* ===============================
+   Hero Layout
+================================ */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.hero-section .container {
+    position: relative;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    z-index: 2;
+}
+
+/* ===============================
+   Animated Background
+================================ */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Gradient Blobs */
+.blob {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+    animation: blobFloat 18s infinite ease-in-out;
+}
+
+.blob-1 {
+    top: -120px;
+    left: -120px;
+    background: radial-gradient(circle at 30% 30%,
+            var(--primary),
+            #7b7ef6);
+}
+
+.blob-2 {
+    bottom: -140px;
+    right: -140px;
+    background: radial-gradient(circle at 70% 70%,
+            var(--primary-light),
+            #b7b9ff);
+    animation-delay: -8s;
+}
+
+/* Subtle Grid Overlay */
+.grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* ===============================
+   Hero Content
+================================ */
+.hero-greeting {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.hero-name {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.hero-role {
+    font-size: 28px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 20px;
+}
+
+.role-wrapper {
+    display: inline-block;
+    position: relative;
+    height: 32px;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+#role-text {
+    display: inline-block;
+    transition: all 0.5s ease;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===============================
+   Expertise Badges
+================================ */
+.hero-badges {
+    margin-bottom: 25px;
+}
+
+.badge-outline {
+    border: 1px solid rgba(62, 67, 233, 0.25);
+    color: #495057;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 6px 14px;
+    font-weight: 500;
+    margin: 4px 6px 4px 0;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+/* ===============================
+   Description
+================================ */
+.hero-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    max-width: 520px;
+    margin-bottom: 35px;
+}
+
+/* ===============================
+   CTA Buttons
+================================ */
+.hero-actions .btn {
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Primary Button */
+.hero-actions .btn-dark {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 10px 28px rgba(62, 67, 233, 0.25);
+}
+
+.hero-actions .btn-dark:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(62, 67, 233, 0.35);
+}
+
+/* Secondary Button */
+.hero-actions .btn-outline-dark {
+    border: 1px solid rgba(62, 67, 233, 0.35);
+    color: var(--primary);
+    background: rgba(62, 67, 233, 0.04);
+}
+
+.hero-actions .btn-outline-dark:hover {
+    background: rgba(62, 67, 233, 0.08);
+}
+
+/* ===============================
+   Metrics
+================================ */
+.hero-metrics {
+    margin-top: 30px;
+}
+
+.metric-card {
+    --border-width: 1px;
+    position: relative;
+    padding: 18px;
+    border-radius: 12px;
+    border: var(--border-width) solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    background-image:
+        linear-gradient(#ffffff, #ffffff),
+        linear-gradient(90deg, var(--primary), #8b8ff8);
+
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    backdrop-filter: blur(6px);
+}
+
+.metric-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.metric-label {
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.metric-value {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.metric-extra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.metric-note {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* ===============================
+   Animations
+================================ */
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(40px, -30px) scale(1.05);
+    }
+
+    66% {
+        transform: translate(-30px, 40px) scale(0.95);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* ===============================
+   Skills Section
+================================ */
+.skills-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.section-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.section-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* Skill Cards */
+.skill-card {
+    height: 100%;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(62, 67, 233, 0.15);
+    background: linear-gradient(#ffffff, #ffffff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(62, 67, 233, 0.12);
+}
+
+/* Evolving Skills Note */
+.skills-note {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 780px;
+    margin: 0 auto;
+    opacity: 0.85;
+}
+
+/* ===============================
+   About Section
+================================ */
+.about-section {
+    padding: 110px 0;
+    background: #ffffff;
+}
+
+/* Image */
+.about-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Content */
+.about-content {
+    padding-left: 20px;
+}
+
+.about-role {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 18px;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+/* Info List */
+.about-info {
+    margin: 28px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about-info li {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.about-info span {
+    min-width: 90px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.about-info a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.about-info a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   Actions / Hiring Buttons
+================================ */
+.about-section {
+    position: relative;
+    padding: 110px 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(62, 67, 233, 0.15);
+}
+
+/* Primary CTA */
+.btn-primary.btn-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 14px 36px rgba(62, 67, 233, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn-primary.btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px rgba(62, 67, 233, 0.45);
+}
+
+/* Secondary CTA (Trust) */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    background: rgba(62, 67, 233, 0.08);
+    border: 1px solid rgba(62, 67, 233, 0.3);
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(62, 67, 233, 0.15);
+}
+
+/* Soft CTA */
+.btn-link {
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ===============================
+   Experience Section
+================================ */
+.experience-section {
+    position: relative;
+    padding: 110px 0;
+    border-top: 1px solid rgba(62, 67, 233, 0.15);
+}
+
+/* ===============================
+   Timeline Layout
+================================ */
+.experience-timeline {
+    position: relative;
+    padding-left: 36px;
+}
+
+.experience-timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+            var(--primary),
+            rgba(62, 67, 233, 0.15));
+}
+
+/* Timeline Dot */
+.timeline-dot {
+    position: absolute;
+    left: -1px;
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid var(--primary);
+    z-index: 2;
+}
+
+.experience-item.current .timeline-dot {
+    background: var(--primary);
+}
+
+/* Experience Item */
+.experience-item {
+    position: relative;
+    margin-bottom: 34px;
+}
+
+/* Card */
+.experience-card {
+    margin-left: 30px;
+    padding: 26px 28px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(62, 67, 233, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(62, 67, 233, 0.15);
+}
+
+/* Header */
+.exp-header h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.exp-role {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Meta */
+.exp-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 10px 0 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.exp-badge {
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 10px;
+    background: rgba(62, 67, 233, 0.12);
+    color: var(--primary);
+}
+
+/* Description */
+.exp-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+/* CTAs */
+.exp-ctas {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-sm {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ===============================
+   Services Section
+================================ */
+.services-section {
+    padding: 110px 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(62, 67, 233, 0.15);
+}
+
+/* Service Card */
+.service-card {
+    height: 100%;
+    padding: 30px 26px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(62, 67, 233, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 44px rgba(62, 67, 233, 0.15);
+}
+
+/* Icon */
+.service-icon {
+    font-size: 34px;
+    color: var(--primary);
+    margin-bottom: 18px;
+    display: inline-block;
+}
+
+/* Title */
+.service-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+/* Description */
+.service-description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* ======================================
+   Portfolio Highlight Section
+====================================== */
+.portfolio-highlight-section {
+    padding: 120px 0;
+    position: relative;
+    border-top: 1px solid rgba(62, 67, 233, 0.15);
+}
+
+/* ======================================
+   Swiper Equal Height Fix
+====================================== */
+.portfolio-slider .swiper-wrapper {
+    align-items: stretch;
+}
+
+.portfolio-slider .swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+.portfolio-slide-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(62, 67, 233, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.portfolio-slide-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 48px rgba(62, 67, 233, 0.18);
+}
+
+/* ======================================
+   Image
+====================================== */
+.portfolio-slide-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* ======================================
+   Content
+====================================== */
+.slide-content {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.slide-content .tag {
+    display: inline-block;
+    width: fit-content;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    background: rgba(62, 67, 233, 0.12);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.slide-content h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.slide-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    flex-grow: 1;
+    margin-bottom: 12px;
+}
+
+.slide-content a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* ======================================
+   Swiper Navigation Buttons
+====================================== */
+.portfolio-slider .swiper-button-next,
+.portfolio-slider .swiper-button-prev {
+
+    /* border: 1px solid rgba(62, 67, 233, 0.25); */
+    color: var(--primary);
+    /* box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08); */
+    transition: all 0.3s ease;
+}
+
+.portfolio-slider .swiper-button-next:hover,
+.portfolio-slider .swiper-button-prev:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+/* Remove default arrow styling */
+.portfolio-slider .swiper-button-next::after,
+.portfolio-slider .swiper-button-prev::after {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Button positioning */
+.portfolio-slider .swiper-button-prev {
+    left: 0;
+}
+
+.portfolio-slider .swiper-button-next {
+    right: 0;
+}
+
+/* ======================================
+   Bottom CTA
+====================================== */
+.portfolio-footer-text {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.portfolio-cta {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+
+/* ===============================
+   Why Hire Me Section
+================================ */
+.why-section {
+    padding: 120px 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(62, 67, 233, 0.15);
+}
+
+/* Card */
+.why-card {
+    height: 100%;
+    padding: 34px 28px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(62, 67, 233, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 52px rgba(62, 67, 233, 0.16);
+}
+
+/* Icon */
+.why-icon {
+    font-size: 34px;
+    color: var(--primary);
+    margin-bottom: 18px;
+}
+
+/* Title */
+.why-card h6 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+/* Text */
+.why-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Objective Box */
+.why-objective {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 26px 28px;
+    border-radius: 18px;
+    background: rgba(62, 67, 233, 0.05);
+    border: 1px solid rgba(62, 67, 233, 0.2);
+}
+
+.why-objective i {
+    font-size: 26px;
+    color: var(--primary);
+    margin-top: 4px;
+}
+
+.why-objective p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+/* ===============================
+   CTA Card Section
+================================ */
+.cta-section {
+    padding: 120px 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(62, 67, 233, 0.15);
+}
+
+/* Card */
+.cta-card {
+    width: 100%;
+    position: relative;
+    padding: 48px 42px;
+    border-radius: 22px;
+    background: #ffffff;
+    text-align: center;
+
+    /* Gradient Border */
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(#ffffff, #ffffff),
+        linear-gradient(135deg, rgba(62, 67, 233, 0.6), rgba(62, 67, 233, 0.15));
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+
+    box-shadow: 0 28px 60px rgba(62, 67, 233, 0.12);
+}
+
+/* Description */
+.cta-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 32px;
+}
+
+/* Actions */
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.cta-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+/* Small note */
+.cta-note {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+    .cta-card {
+        padding: 36px 26px;
+    }
+}
+
+/* ===============================
+   Footer
+================================ */
+.site-footer {
+    padding: 80px 0 40px;
+    background: #ffffff;
+}
+
+/* Divider */
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(62, 67, 233, 0.25),
+            transparent);
+    margin-bottom: 48px;
+}
+
+/* Brand */
+.footer-brand {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.footer-about {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* Titles */
+.footer-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+}
+
+/* Links */
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.footer-links a,
+.footer-contact a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: var(--primary);
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+/* Availability */
+.footer-availability {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+/* CTA */
+.footer-cta {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Social */
+.footer-social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 14px;
+}
+
+.footer-social li a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(62, 67, 233, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.footer-social li a:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+/* Copy */
+.footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* responsive media for mobile */
+@media (max-width: 767px) {
+    .hero-section {
+        padding-top: 50px;
+    }
+}
