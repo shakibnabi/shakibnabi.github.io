@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, Syne } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import { site } from "@/lib/content";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const display = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
 });
 
-const plex = IBM_Plex_Sans({
-  variable: "--font-plex",
+const body = Manrope({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -21,9 +21,8 @@ export const metadata: Metadata = {
     "Full-stack engineer and founder building web, mobile, and AI systems for startups. 10+ years shipping products that have to work in production.",
   metadataBase: new URL(site.siteUrl),
   openGraph: {
-    title: `${site.name} — Portfolio`,
-    description:
-      "I build the messy parts of products so teams can ship with less drama.",
+    title: `${site.name} — Resume & Portfolio`,
+    description: heroOgDescription(),
     url: site.siteUrl,
     siteName: site.name,
     images: [{ url: site.ogImage }],
@@ -34,9 +33,13 @@ export const metadata: Metadata = {
   },
 };
 
+function heroOgDescription() {
+  return "I take messy product ideas and turn them into systems teams can ship, scale, and maintain.";
+}
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${syne.variable} ${plex.variable} h-full`}>
+    <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
       <body className="site-shell min-h-full antialiased">{children}</body>
     </html>
   );

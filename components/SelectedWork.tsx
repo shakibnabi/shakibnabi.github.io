@@ -8,77 +8,99 @@ import { gsap, registerGsap, useGSAP } from "@/lib/gsap";
 
 export function SelectedWork() {
   const root = useRef<HTMLElement>(null);
-
   registerGsap();
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
-
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.utils.toArray<HTMLElement>(".work-figure").forEach((figure) => {
-          gsap.from(figure, {
-            y: 48,
+        gsap.utils.toArray<HTMLElement>(".work-row").forEach((row) => {
+          gsap.from(row, {
+            y: 56,
             opacity: 0,
-            duration: 0.9,
+            duration: 0.95,
             ease: "power2.out",
             scrollTrigger: {
-              trigger: figure,
-              start: "top 85%",
+              trigger: row,
+              start: "top 82%",
               toggleActions: "play none none reverse",
             },
           });
         });
       });
-
       return () => mm.revert();
     },
     { scope: root },
   );
 
   return (
-    <section id="work" ref={root} className="section">
+    <section id="work" ref={root} className="section !pt-4">
       <div className="container">
-        <div className="max-w-2xl">
-          <span className="section-kicker">Selected work</span>
-          <h2 className="section-title">Projects that had to work in the wild</h2>
-          <p className="section-copy">
-            A short list of builds I&apos;ve shipped — commerce, fintech, alumni tooling,
-            and mobile flows. Each one had real users and real constraints.
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <span className="section-kicker">Selected work</span>
+            <h2 className="section-title">Case highlights from production</h2>
+            <p className="section-copy">
+              Real products with real constraints — commerce, FinTech, alumni
+              platforms, and mobile systems I&apos;ve shipped end to end.
+            </p>
+          </div>
+          <p className="text-sm font-semibold text-[var(--muted)] md:pb-2">
+            06 featured · 210+ delivered
           </p>
         </div>
 
-        <div className="mt-12 grid gap-10 md:grid-cols-2">
-          {projects.map((project) => {
+        <div className="mt-14 space-y-8 md:space-y-12">
+          {projects.map((project, i) => {
+            const reverse = i % 2 === 1;
             const body = (
-              <figure className="work-figure group">
-                <div className="relative aspect-[16/11] overflow-hidden rounded-[var(--radius-md)] bg-[var(--paper-deep)]">
+              <article
+                className={`work-row group grid items-center gap-6 overflow-hidden rounded-[var(--radius)] border border-[var(--line)] bg-white/75 p-3 shadow-[var(--shadow-lift)] md:grid-cols-2 md:gap-0 md:p-0 ${
+                  reverse ? "md:[&>figure]:order-2" : ""
+                }`}
+              >
+                <figure className="relative aspect-[16/11] overflow-hidden rounded-[14px] bg-[var(--bg)] md:rounded-none">
                   <Image
                     src={project.image}
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    className="object-cover transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-[1.04]"
                   />
                   <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10" />
-                </div>
-                <figcaption className="mt-4 flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-[var(--accent)]">{project.tag}</p>
-                    <h3 className="display mt-1 text-2xl font-semibold tracking-tight md:text-[1.7rem]">
-                      {project.title}
-                    </h3>
-                    <p className="mt-2 max-w-md text-[0.98rem] leading-relaxed text-[var(--slate)]">
-                      {project.blurb}
-                    </p>
+                </figure>
+
+                <div className="flex flex-col justify-center px-4 pb-4 md:px-10 md:py-10">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="display text-sm font-semibold tracking-normal text-[var(--accent)]">
+                      {project.index}
+                    </span>
+                    <span className="chip chip-accent">{project.tag}</span>
+                  </div>
+                  <h3 className="display mt-4 text-3xl font-bold tracking-tight md:text-4xl">
+                    {project.title}
+                  </h3>
+                  <p className="mt-3 text-[1.02rem] leading-relaxed text-[var(--muted)]">
+                    {project.blurb}
+                  </p>
+                  <p className="mt-4 text-sm font-semibold text-[var(--ink-soft)]">
+                    {project.outcome}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span key={tech} className="chip">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                   {project.href ? (
-                    <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink)] transition-colors group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
-                      <ArrowUpRight size={18} strokeWidth={1.75} />
+                    <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)]">
+                      View project
+                      <ArrowUpRight size={16} strokeWidth={1.75} />
                     </span>
                   ) : null}
-                </figcaption>
-              </figure>
+                </div>
+              </article>
             );
 
             return project.href ? (

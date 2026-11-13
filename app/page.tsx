@@ -3,9 +3,10 @@ import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Proof } from "@/components/Proof";
+import { Marquee } from "@/components/Marquee";
 import { SelectedWork } from "@/components/SelectedWork";
 import { Services } from "@/components/Services";
+import { Skills } from "@/components/Skills";
 
 export default function Home() {
   return (
@@ -13,11 +14,12 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Marquee />
         <SelectedWork />
         <About />
         <Experience />
+        <Skills />
         <Services />
-        <Proof />
         <Contact />
       </main>
     </>

@@ -7,7 +7,7 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
-import { services, skills } from "@/lib/content";
+import { services } from "@/lib/content";
 
 const icons: Record<(typeof services)[number]["icon"], LucideIcon> = {
   server: Server,
@@ -20,51 +20,43 @@ const icons: Record<(typeof services)[number]["icon"], LucideIcon> = {
 
 export function Services() {
   return (
-    <section id="services" className="section border-y border-[var(--line)] bg-[rgba(255,255,255,0.4)]">
+    <section id="services" className="section">
       <div className="container">
         <div className="max-w-2xl">
           <span className="section-kicker">Services</span>
           <h2 className="section-title">How I can help your team</h2>
           <p className="section-copy">
-            One person who can take a product from architecture through shipping —
-            without handing every piece to a different vendor.
+            One senior engineer who can own architecture through shipping —
+            without splitting every piece across a different vendor.
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => {
             const Icon = icons[service.icon];
             return (
-              <li key={service.title} className="border-t border-[var(--line)] pt-5">
-                <Icon
-                  className="text-[var(--accent)]"
-                  size={22}
-                  strokeWidth={1.6}
-                  aria-hidden
-                />
-                <h3 className="display mt-4 text-xl font-semibold tracking-tight">
+              <li
+                key={service.title}
+                className="group rounded-[var(--radius)] border border-[var(--line)] bg-white/70 p-6 transition-colors hover:border-[rgba(17,100,102,0.35)] hover:bg-white"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span className="grid h-11 w-11 place-items-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
+                    <Icon size={20} strokeWidth={1.6} aria-hidden />
+                  </span>
+                  <span className="display text-sm font-semibold text-[var(--muted-soft)]">
+                    {service.index}
+                  </span>
+                </div>
+                <h3 className="display mt-5 text-2xl font-bold tracking-tight">
                   {service.title}
                 </h3>
-                <p className="mt-2 text-[0.98rem] leading-relaxed text-[var(--slate)]">
+                <p className="mt-3 text-[0.98rem] leading-relaxed text-[var(--muted)]">
                   {service.description}
                 </p>
               </li>
             );
           })}
         </ul>
-
-        <div className="mt-16 rounded-[var(--radius-md)] border border-[var(--line)] bg-[rgba(245,246,248,0.7)] p-6 md:p-8">
-          <h3 className="display text-2xl font-semibold tracking-tight">{skills.title}</h3>
-          <p className="mt-2 max-w-2xl text-[var(--slate)]">{skills.note}</p>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {skills.groups.map((group) => (
-              <div key={group.title}>
-                <p className="text-sm font-medium text-[var(--ink)]">{group.title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-[var(--slate)]">{group.items}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
